@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Kashish ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+/* ---------------------------
+GLOBAL STYLES
+----------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffbfd7, #e2b0ff, #ffe3ec);
+  overflow-x: hidden;
+  color: #5a0034;
+}
+
+/* Soft floating particles */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.particles span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: floatUp 8s infinite ease-in;
+  filter: blur(2px);
+}
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0.5; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* Smooth Page Transitions */
+section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0;
+  transition: 1s ease;
+}
+.active-section { opacity: 1; }
+
+.btn {
+  padding: 15px 35px;
+  margin-top: 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(90deg, #ff74a4, #c85cff);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,130,180,0.6);
+  transition: 0.3s;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255,130,180,0.9);
+}
+
+nav {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  padding: 10px 20px;
+  border-radius: 40px;
+  z-index: 999;
+  display: flex;
+  gap: 20px;
+  font-weight: 600;
+}
+nav a {
+  text-decoration: none;
+  color: #6a0055;
+}
+nav a:hover { color: #ff2e8a; }
+
+/* HERO */
+.hero h1 {
+  font-size: 40px;
+  max-width: 700px;
+  animation: fadeIn 2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.glowing-heart {
+  font-size: 100px;
+  animation: heartbeat 1.8s infinite ease-in-out;
+  margin: 20px 0;
+}
+@keyframes heartbeat {
+  0% { transform: scale(1); color: #ff5f9e; }
+  50% { transform: scale(1.3); color: #ff90c8; }
+  100% { transform: scale(1); color: #ff5f9e; }
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin-top: 40px;
+}
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  transition: 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255,200,230,0.9);
+}
+
+/* Envelope */
+.envelope {
+  width: 200px;
+  height: 130px;
+  position: relative;
+  background: #ff9bcf;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px rgba(255,150,200,0.8);
+}
+.envelope::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  top: -50px;
+  background: #ff74a4;
+  border-radius: 10px;
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+  transition: 0.6s;
+}
+.envelope.open::before {
+  transform: rotateX(-180deg);
+}
+
+.secret-text {
+  max-width: 650px;
+  font-size: 22px;
+  line-height: 1.6;
+  opacity: 0;
+  transition: 1s;
+}
+
+/* Surprise */
+.surprise-box {
+  font-size: 28px;
+  background: rgba(255,255,255,0.7);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,150,210,0.7);
+  max-width: 600px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ⭐⭐ BACKGROUND MUSIC ⭐⭐ -->
+<audio id="bgMusic" preload="auto">
+  <source src="for my.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// 100% Working Music Start Fix
+let musicStarted = false;
+
+function startMusic() {
+  const audio = document.getElementById("bgMusic");
+  if (!musicStarted) {
+    audio.volume = 0.5;
+    audio.play().then(() => {
+      musicStarted = true;
+    }).catch(() => {});
+  }
+}
+</script>
+
+<!-- Floating particles -->
+<div class="particles"></div>
+<script>
+for (let i = 0; i < 40; i++) {
+  let p = document.createElement("span");
+  p.style.left = Math.random() * 100 + "%";
+  p.style.animationDelay = Math.random() * 8 + "s";
+  document.querySelector(".particles").appendChild(p);
+}
+</script>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" onclick="startMusic(); showSection('home')">Home</a>
+  <a href="#" onclick="startMusic(); showSection('love')">Love Message</a>
+  <a href="#" onclick="startMusic(); showSection('gallery')">Gallery</a>
+  <a href="#" onclick="startMusic(); showSection('secret')">Secret</a>
+  <a href="#" onclick="startMusic(); showSection('surprise')">Surprise</a>
+</nav>
+
+<!-- PAGE 1 -->
+<section id="home" class="active-section hero">
+  <h1>“This world is beautiful… but not as beautiful as you, Kashish.”</h1>
+  <div class="glowing-heart">❤️</div>
+  <button class="btn" onclick="startMusic(); showSection('love')">Kashish, Tap Here ❤️</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="love">
+  <h2 style="font-family:'Great Vibes', cursive; font-size:48px;">Dear Kashish…</h2>
+  <div id="loveText"></div>
+  <button class="btn" onclick="startMusic(); showSection('gallery')">Another Surprise for You, Kashish ✨</button>
+</section>
+
+<!-- PAGE 3 – GALLERY -->
+<section id="gallery">
+  <h2>Every moment with you is a memory worth keeping, Kashish.</h2>
+
+  <div class="gallery">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.18 PM (1).jpeg">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.18 PM.jpeg">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.17 PM.jpeg">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.19 PM (1).jpeg">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.19 PM.jpeg">
+    <img src="WhatsApp Image 2025-12-12 at 1.19.18 PM (2).jpeg">
+  </div>
+
+  <button class="btn" onclick="startMusic(); showSection('secret')">Tap for a Secret Message 💌</button>
+</section>
+
+<!-- SECRET PAGE -->
+<section id="secret">
+  <div class="envelope" onclick="startMusic(); openEnvelope()"></div>
+  <div class="secret-text" id="secretText">
+    Kashish,  
+    You are the softest part of my heart,  
+    the warmest corner of my soul,  
+    and the most beautiful thought in my mind.  
+    I adore you endlessly… 💖
+  </div>
+</section>
+
+<!-- SURPRISE PAGE -->
+<section id="surprise">
+  <div class="surprise-box" id="surpriseBox"></div>
+</section>
+
+<footer style="text-align:center; padding:30px; margin-top:50px; font-weight:600;">
+  Made with Infinite Love for Kashish ❤️
+</footer>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active-section"));
+  document.getElementById(id).classList.add("active-section");
+
+  if (id === "love") typeWriter();
+  if (id === "surprise") randomCompliment();
+}
+
+let message = `
+Kashish…  
+Every beat of my heart whispers your name.  
+Every sunrise feels softer because of you.  
+Every moment becomes meaningful when you’re in it.  
+
+You are my peace… my warmth… my favorite place in the world.  
+And loving you feels like a beautiful dream I never want to wake up from.  
+`;
+let i = 0;
+function typeWriter() {
+  const target = document.getElementById("loveText");
+  target.innerHTML = "";
+  i = 0;
+  let interval = setInterval(() => {
+    if (i < message.length) {
+      target.innerHTML += message.charAt(i);
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 40);
+}
+
+function openEnvelope() {
+  document.querySelector(".envelope").classList.add("open");
+  setTimeout(() => {
+    document.getElementById("secretText").style.opacity = 1;
+  }, 700);
+}
+
+const compliments = [
+  "Kashish, your smile can turn the darkest day into sunshine.",
+  "You are breathtaking in ways words can never capture.",
+  "Your presence feels like home.",
+  "You are a rare kind of beautiful.",
+  "Everything about you is pure magic.",
+  "Your heart is the most precious thing I’ve ever known."
+];
+
+function randomCompliment() {
+  document.getElementById("surpriseBox").innerText =
+    compliments[Math.floor(Math.random() * compliments.length)];
+}
+</script>
+
+</body>
+</html>
